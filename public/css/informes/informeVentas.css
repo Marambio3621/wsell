@@ -1,0 +1,1005 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* ROOT VARIABLES */
+:root{
+    /*--color-primary: #7380ec;*/
+    --color-primary: #00ADB5;
+    --color-danger: #ff7782;
+    --color-success: #41f1b6;
+    --color-warning: #ffbb55;
+    --color-white: #fff;
+    --color-info-dark: #7d8da1;
+    --color-info-light: rgba(132, 139, 200, 0.18);
+    --color-dark:#363949;
+    --color-light: rgba(132,139,200,0.18);
+    --color-primary-variant: #111e88;
+    --color-dark-variant: #677483;
+    --color-background: #f6f6f9;
+    
+
+    --card-border-radius: 2rem;
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 0.8rem;
+    --border-radius-3: 1.2rem;
+
+    --card-padding: 1.8rem;
+    --pading-1: 1.2rem;
+
+    --box-shadow: 0 2rem 3rem var(--color-light);
+}
+
+/* DARK THEME VARIABLES*/
+
+.dark-theme-variables{
+    --color-background: #181a1e;
+    --color-white: #202528;
+    --color-dark: #edeffd;
+    --color-dark-variant: #a3bdcc;
+    --color-light: #rgba(0, 0, 0, 0.4);
+    --box-shadow: 0 2rem 3rem var(--color-light)
+}
+
+/* NORMALIZE*/
+*{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    appearance: none;
+    border: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 14px;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    font-family: poppins, sans-serif;
+    background: var(--color-background);
+    user-select: none;
+    overflow-x: hidden;
+    color: var(--color-dark);
+}
+
+/*CONTENEDOR PRINCIPAL + USO DE DISPLAY GRID CON 3 COLUMNAS*/
+.container{
+    display: grid;
+    width: 96%;
+    margin: 0 auto;
+    /*background-color: #41f1b6;*/
+    gap: 1.8rem;
+    grid-template-columns: 14rem auto;
+}
+
+/*STYLE DE ETIQUETAS TEXT, IMG, MODALS, ETC CON LOS ROOT VARIABLES*/
+a{
+    color: var(--color-dark);
+}
+
+img{
+    display: block;
+    width: 100%;
+}
+
+h1{
+    font-weight: 800;
+    font-size: 1.8rem;
+}
+
+h2{
+    font-size: 1.4rem;
+}
+
+h3{
+    font-size: 0.87rem;
+}
+
+h4{
+    font-size: 0.8rem;
+}
+
+h5{
+    font-size: 0.77rem;
+}
+
+small{
+    font-size: 0.75rem;
+}
+
+.profile-photo{
+    width: 2.9rem;
+    height: 2.8rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.text-muted{
+    color: var(--color-info-dark);
+}
+
+p{
+    color: var(--color-dark-variant);
+}
+
+b{
+    color: var(--color-dark);
+}
+
+.primary{
+    color: var(--color-primary);
+}
+
+.danger{
+    color: var(--color-danger);
+}
+
+.success{
+    color: var(--color-success);
+}
+
+.warning{
+    color: var(--color-warning);
+}
+
+/*STYLE PARA EL ASIDE*/
+
+aside{
+    height: 100vh;
+    /*background: gray;*/
+}
+
+.aside__close{
+    display: none;
+}
+
+.aside__top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.4rem;
+}
+
+.logo{
+    display: flex;
+    gap:0.8rem;
+}
+
+.logo img{
+    width: 2rem;
+    height: 2rem;
+}
+
+/* STYLE ASIDE MAIN*/
+
+
+aside h3{
+    font-weight: 500;
+}
+
+.aside__main{
+    display: flex;
+    flex-direction: column;
+    height: 86vh;
+    position: relative;
+    top: 3rem;
+    border-radius: var(--border-radius-3);
+}
+
+
+.menu_item{
+    display: flex;
+    color: var(--color-info-dark);
+    margin: 2rem;
+    margin-bottom: 4.7rem;
+    gap: 1rem;
+    align-items: center;
+    position: relative;
+    height: 1.5rem;
+    transition:  all 300ms ease;
+}
+
+.collapse{
+    display: grid;
+    color: var(--color-info-dark);
+    grid-template-columns: 20px max-content 1fr;
+    height: auto;
+}
+
+
+.collapse_menu{
+    display: none;
+    padding: .75rem 2.25rem;
+}
+
+.collapse_menu-item {
+    color: var(--color-info-dark);
+    display: block;
+    margin: 15px 0px;
+}
+
+.showCollapse{
+    display: block;
+}
+
+.aside__main a span{
+    font-size: 1.6rem;
+    transition: all 300ms ease;
+}
+
+#cerrar_sesion{
+    bottom: 2rem;
+    width: 100%;
+}
+
+.aside__main a:focus{
+    background: var(--color-light);  
+    color: var(--color-primary);
+    margin-left: 0;
+}
+
+.aside__main a:focus:before{
+    content: '';
+    width: 6px;
+    height: 100%;
+    background: var(--color-primary); 
+}
+
+.aside__main a.active span{
+    color: var(--color-primary);
+    margin-left: calc(1rem - 3px);
+}
+
+.aside__main a:hover{
+    color: var(--color-primary);
+}
+
+.aside__main a:hover span{
+    margin-left: 1rem;
+}
+
+
+/* STYLE PARA EL MAIN */
+
+main{
+    margin-top: 1.4rem;
+}
+
+.date{
+    background-color: var(--color-light);
+    border-radius: var(--border-radius-1);
+    padding: 0.5rem 1.6rem; 
+}
+
+.date__input{
+    background: transparent;
+    color: var(--color-dark);
+}
+
+.informacion{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.6rem;
+}
+
+.informacion h3{
+    margin: 1rem 0 0.6rem;
+    font-size: 1rem;
+}
+
+.informacion__item{
+    background: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    margin-top: 1rem;
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+}
+
+.informacion__item:hover{
+    box-shadow: none;
+}
+
+.informacion__item span{
+    background: var(--color-primary);
+    padding: 0.5rem;
+    border-radius: 50%;
+    color: var(--color-white);
+    font-size: 2rem;
+}
+
+.inversion span{
+    background: var(--color-danger);
+}
+
+.ganancia span{
+    background: var(--color-success);
+}
+
+.middle{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.progress{
+    position: relative;
+    width: 92px;
+    height: 92px;
+    border-radius: 50%;
+}
+
+.progress svg{
+    width: 7rem;
+    height: 7rem;
+}
+
+.progress svg circle{
+    fill: none;
+    stroke: var(--color-primary);
+    stroke-width: 14;
+    stroke-linecap: round;
+    transform: translate(5px, 5px);
+}
+
+
+/* MANIPULAR CON JAVASCRIPT PARA QUE LA BARRA VAYA CAMBIANDO*/
+
+.ventas svg circle{
+    stroke-dasharray: 100;
+    stroke-dashoffset: 92;
+}
+
+.inversion svg circle{
+    stroke-dasharray: 110;
+    stroke-dashoffset: 92;
+}
+
+.ganancia svg circle{
+    stroke-dasharray: 110;
+    stroke-dashoffset: 92;
+}
+
+/* --- */
+
+.porcentaje{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.recordatorio{
+    margin-top:  1.3rem;
+    display: block;
+}
+
+/* MAIN - SECCION - VENTAS RECIENTES*/
+
+.ventas__recientes{
+    margin-top: 2rem;
+}
+
+.ventas__recientes h2{
+    margin-bottom: 0.8rem;
+}
+
+.ventas__recientes a{
+    text-align: center;
+    display: block;
+    margin: 1rem auto;
+    color: var(--color-primary);
+}
+
+.ventas__recientes table{
+    background: var(--color-white);
+    width: 100%;
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+}
+
+.ventas__recientes table:hover{
+    box-shadow: none;
+}
+
+.ventas__recientes table tbody td{
+    height: 2.8rem;
+    border-bottom: 1px solid var(--color-light);
+}
+
+.ventas__recientes table tbody tr:last-child td{
+    border: none;
+}
+
+
+/* ASIDE DERECHO */
+
+.aside__derecho{
+    margin-top: 1.4rem;
+}
+
+.aside__derecho .top{
+    display: flex;
+    justify-content: end;
+    gap: 2rem;
+}
+
+.top button{
+    display: none;
+}
+
+.cambio_tema{
+    background: var(--color-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 1.6rem;
+    width: 4.2rem;
+    cursor: pointer;
+    border-radius: var(--border-radius-1);
+}
+
+.cambio_tema span{
+    font-size: 1.2rem;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cambio_tema span.active{
+    background: var(--color-primary);
+    color: white;
+    border-radius: var(--border-radius-1);
+}
+
+.perfil{
+    display: flex;
+    gap:2rem;
+    text-align: right;
+}
+
+/*ASIDE DERECHO - SECCIÓN - ACTIVIDADES RECIENTES*/
+
+.actividades_recientes{
+    margin-top: 1rem;
+}
+
+.actividades_recientes h2{
+    margin-bottom: 0.8rem;
+}
+
+.actividades_recientes .updates{
+    background-color: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+}
+
+.actividades_recientes .updates:hover{
+    box-shadow: none;
+}
+
+.actividades_recientes .updates .update{
+    margin-bottom: 1rem;
+}
+
+/* ASIDE DERECHO - SECCIÓN - RESUMENES ANALITICOS*/
+
+.resumen_analisis{
+    margin-top: 2rem;
+}
+
+.resumen_analisis h2{
+    margin-bottom: 0.8rem;
+}
+
+.resumen__items{
+    background: var(--color-white);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.7rem;
+    padding: 1.4rem var(--card-padding);
+    border-radius: var(--border-radius-3);
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+}
+
+.resumen__items:hover{
+    box-shadow: none;
+}
+
+.resumen__items .icon{
+    padding: 0.6rem;
+    color: var(--color-white);
+    border-radius: 50%;
+    background: var(--color-primary);
+    display: flex;
+}
+
+.productos_vendidos .icon{
+    background: var(--color-success);
+}
+
+
+.seccion_derecha{
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin: 0;
+    width: 100%;
+}
+
+.agregar_producto{
+    background-color: transparent;
+    border: 2px dashed var(--color-primary);
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.agregar_producto div{
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+
+.agregar_producto div h3{
+    font-weight: 600;
+}
+
+
+
+/* MEDIA QUERIES para Tablets Grandes y Laptops Pequeñas*/
+@media screen and (max-width:1220px){
+
+    .container{
+        width: 94%;
+        grid-template-columns: 7rem auto;
+    }
+
+    /* RESPONSIVE ASIDE IZQUIERDO*/
+    .logo h2{
+        display: none;
+    }
+
+    .aside__main h3{
+        display: none;
+    }
+
+    .aside__main a{
+        width: 5.6rem;
+    }
+
+    .aside__main a:last-child{
+        position: relative;
+        margin-top: 3rem;
+    }
+
+    /* RESPONSIVE MAIN*/
+
+    .informacion{
+        grid-template-columns: 1fr;
+        gap:0;
+    }
+
+
+    .informacion table{
+        width: 83vw;
+    }
+
+    /*COPIAR ESTO A TODAS LAS PLANTILLAS*/
+
+
+    body {
+        overflow-y: visible;
+    }
+
+    .menu_informes{
+        margin-top: 1.4rem;
+        transform: translateX(-39%);
+        margin-left: -4.4rem;
+    }
+
+    #menu_item_negocio{
+       margin-top: -3rem;
+    }
+
+    #menu_item_producto{
+        margin-top: -1.3rem;
+        margin-bottom: 1.3rem;
+    }
+
+
+    #producto_icon{
+        position:relative;
+        top: -8.3rem;
+        left: 4.5rem;
+    }
+
+    .collapse_menu-item h3{
+        display: block;
+    }
+}
+
+/* MEDIA QUERIES para Tablets Pequeñas y Mobile*/
+
+@media screen and (max-width: 768px){
+    .container{
+        width: 100%;
+        grid-template-columns: 1fr;
+    }
+
+    aside{
+        position: fixed;
+        left: -100%;
+        background: var(--color-white);
+        width: 18rem;
+        z-index: 3;
+        box-shadow: 1rem 2rem 4rem var(--color-light);
+        height: 100vh;
+        padding-right: var(--card-padding);
+        display:none;
+        animation: showMenu 400ms ease forwards;
+    }
+
+    @keyframes showMenu{
+        to{
+            left: 0;
+        }
+    }
+
+    .logo{
+        margin-left: 1rem;
+    }
+
+    .logo h2{
+        display: inline;
+    }
+
+    .aside__main h3{
+        display: inline;
+    }
+
+    .aside__main a{
+        width: 100%;
+        height: 3.4rem;
+    }
+
+    .aside__main a:last-child{
+        display: absolute;
+        bottom: 2rem;
+    }
+
+    .aside__close{
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    /* RESPONSIVE MAIN*/
+
+    main{
+        margin-top: 8rem;
+        padding: 0 1rem;
+    }
+
+    .ventas__recientes{
+        margin-top: 6rem;
+    }
+
+    .ventas__recientes table{
+        width: 100%;
+        margin: 0;
+    }
+
+
+    /* RESPONSIVE - ASIDE DERECHO */
+    .aside__derecho{
+        width: 94%;
+        margin: 0 auto 4rem;
+    }
+
+    .aside__derecho .top{
+        position: fixed;
+        top: 0;
+        left: 0;
+        align-items: center;
+        padding: 0 0.8rem;
+        height: 4.6rem;
+        width: 100%;
+        margin: 0;
+        z-index: 2;
+        box-shadow: 0 1rem 1rem var(--color-light);
+    }
+
+    .cambio_tema{
+        width: 4.4rem;
+        position: absolute;
+        left: 66%;
+    }
+
+    .aside__derecho .top .perfil .info{
+        display: none;
+    }
+
+    .aside__derecho .top button{
+        display: inline-block;
+        background: transparent;
+        cursor: pointer;
+        color: var(--color-dark);
+        position: absolute;
+        left: 1rem;
+    }
+
+    .aside__derecho .top button span{
+        font-size: 2rem;
+    }
+
+    /*COPIAR ESTO A TODAS LAS PLANTILLAS*/
+
+    #menu_producto{
+        transform: translateY(-30%);
+    }
+
+    #menu_item_negocio{
+       margin-top: -3rem;
+    }
+
+    #menu_item_producto{
+        margin-top: -1.3rem;
+        margin-bottom: 1.3rem;
+    }
+
+    #menu_informes{
+        margin-left: 0;
+    }
+
+
+    #producto_icon{
+        position:relative;
+        top: -9rem; left: 10rem;
+    }
+
+    body {
+        overflow-y: visible;
+    }
+
+    .my-custom-scrollbar {
+        overflow-y:visible;
+        height: 100vh;
+        overflow-x: hidden;
+    }
+    
+    .table-wrapper-scroll-y {
+        display: block;
+        height: 100vh;
+    }
+}
+
+
+/* MODAL*/
+
+.modal {
+    /* This way it could be display flex or grid or whatever also. */
+    display: absolute;
+    
+    /* Probably need media queries here */
+
+    max-width: 45rem;
+
+    max-height: 100%;
+    
+    position: fixed;
+    
+    z-index: 100;
+    
+    left: 50%;
+    top:-100%;
+    
+    /* Use this for centering if unknown width/height */
+    transform: translate(-50%);
+    
+    /*background: linear-gradient(to right, hsl(210, 30%, 20%), hsl(255, 30%, 25%));*/
+    /*background: linear-gradient(to right, hsl(182, 44%, 62%), hsl(0, 0%, 100%));*/
+    background: var(--color-white);
+    border-radius: var(--border-radius-1);
+    animation: showModal 400ms ease forwards;
+    padding: 3rem;
+
+    box-shadow: hsla(236, 50%, 50%, .3);
+    border: solid 1px black;
+  }
+
+  @keyframes showModal{
+    to{
+        top: 8%;
+    }
+  }
+
+
+  .closed {
+    display: none;
+  }
+  
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 50;
+    opacity: 0.4;
+    background-color: black;
+  }
+  
+  .modal-contenido {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+
+
+  .modal-contenido__item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal_detalle_contenido__item{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+
+.modal_item-input{
+    display: block;
+    font-size: 2rem;
+    background: transparent;
+    border: solid var(--color-primary) 0.1px;
+    border-radius: 4px;
+    width: 17rem;
+}
+  
+  .modal .close-button {
+    flex-basis: 10%;
+    border: 0;  
+    font-size: 1.3rem;
+    background: transparent;
+  }
+  
+.modal_header{
+    display: flex;
+    flex-direction: row;
+}
+
+  
+.modal_header div{
+    flex-basis: 90%;
+}
+
+.modal_header button{
+    flex-basis: 5%;
+}
+
+.modal_medium_detalle_venta{
+    margin-top: 1.3rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.modal_footer{
+    margin-top: 2rem;
+    display: flex;
+}
+
+.modal_footer button{
+    background: var(--color-primary);
+    padding: var(--pading-1);
+    border-radius: var(--border-radius-1);
+    margin: 1rem;
+}
+
+
+
+/* MODAL DETALLE_VENTAS*/
+
+.modal_detalle_venta {
+    /* This way it could be display flex or grid or whatever also. */
+    display: absolute;
+    
+    /* Probably need media queries here */
+
+    max-width: 45rem;
+
+    max-height: 100%;
+    
+    position: fixed;
+    
+    z-index: 100;
+    
+    left: 50%;
+    top:-100%;
+    
+    /* Use this for centering if unknown width/height */
+    transform: translate(-50%);
+    
+    /*background: linear-gradient(to right, hsl(210, 30%, 20%), hsl(255, 30%, 25%));*/
+    /*background: linear-gradient(to right, hsl(182, 44%, 62%), hsl(0, 0%, 100%));*/
+    background: var(--color-white);
+    /*border-radius: var(--border-radius-1);*/
+    animation: showModal 400ms ease forwards;
+    padding: 1.3rem;
+
+    box-shadow: hsla(236, 50%, 50%, .3);
+    border: solid 1px black;
+  }
+
+  @keyframes showModal{
+    to{
+        top: 8%;
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+.filtro_dia{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-basis: 80%;
+    flex-wrap: wrap;
+}
+
+.filtro_dia div{
+    margin-left: 1rem;
+}
+
+.filtro_dia button{
+    margin-left: 1rem;
+}
+
+.button_fechas{
+    background-color: var(--color-primary);
+    padding: var(--pading-1);
+    border-radius: var(--border-radius-1);
+    font-family: poppins;
+    margin-left: 1.2rem;
+}
+
+.menu_informes a{
+    margin-left: -1.5rem;
+}
+
+
+
+#logo{
+    width: 100px;
+    height: 80px;
+    object-fit: contain;
+}

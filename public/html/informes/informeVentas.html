@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TDS2</title>
+
+    <!-- STYLE SHEET-->
+    <link rel="stylesheet" type="text/css" href="../../css/informes/informeVentas.css">
+
+    <!-- MATERIAL ICON-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+
+    <!-- SCRIPT -->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+    <!-- DATABLE JQUERY SCRIPTS-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-colvis-2.2.2/b-html5-2.2.2/b-print-2.2.2/datatables.min.css"/>
+ 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-colvis-2.2.2/b-html5-2.2.2/b-print-2.2.2/datatables.min.js"></script>
+
+</head>
+<body>
+    <div class="container">
+
+        <!-- ASIDE IZQUIERDO -->
+        <aside>
+            <div class="aside__top" style="display: flex; justify-content:center;">
+                <div class="logo">
+                    <img id="logo" src="../images/LOGO.png"> <!-- FALTA PONER LOGO -->
+                     <!-- <h2 style="color: bisque;">WSELL</h2> -->  <!-- NOMBRE DE PROYECTO -->
+                </div>
+                <div class="aside__close" id="close-btn">
+                    <span class="material-icons-sharp">close</span>
+                </div>
+            </div>
+            
+            <!-- ITEMS DEL MENU -->
+            <div class="aside__main  my-custom-scrollbar">
+                <a href="/" class="menu_item">
+                    <span class="material-icons-sharp">space_dashboard</span>
+                    <h3>Dashboard</h3>
+                </a>
+
+                <a href="/ventas" class="menu_item">
+                    <span class="material-icons-sharp">storefront</span>
+                    <h3>Ventas</h3>
+                </a>
+
+                <div style="display:flex;flex-wrap: wrap;" id="menu_item_producto">
+                    <a href="/producto" class="menu_item">
+                        <span class="material-icons-sharp">inventory_2</span>
+                        <h3>Productos</h3>
+                    </a>
+                    <span id ="producto_icon" class="material-icons-sharp collapse_link" style="margin-top: 1.8rem;">expand_more</span>
+                    <ul class="collapse_menu" style="flex-basis: 100%; margin-top: -4rem;" id="menu_producto">
+                        <a href="/producto/categoria" class="collapse_menu-item"> <h3 class="sub_menu_titulo">Categoria</h3> </a>
+                        <a href="/producto/unidad" class="collapse_menu-item"> <h3>Unidad</h3> </a>
+                    </ul>
+                </div>
+
+
+                <a href="/negocio" class="menu_item" id="menu_item_negocio">
+                    <span class="material-icons-sharp">business</span>
+                    <h3>Negocio</h3>
+                </a>
+
+                <a href="/usuarios" class="menu_item">
+                    <span class="material-icons-sharp">people_alt</span>
+                    <h3>Usuarios</h3>
+                </a>
+
+                <div href="#" class="collapse" style="margin-left: 2rem;">
+                    <span class="material-icons-sharp">inventory</span>
+                    <h3 style="margin-left: 1.3rem;">Informes</h3>
+                    <span class="material-icons-sharp collapse_link">expand_more</span>
+                    <ul class="collapse_menu menu_informes" id="menu_informes">
+                        <a href="/informes/graficos" class="collapse_menu-item"> <h3>Graficos</h3> </a>
+                        <a href="/informes/tablas" class="collapse_menu-item"> <h3>Tablas</h3> </a>
+                        <a href="/informes/informeVentas" class="collapse_menu-item"> <h3>Reportes</h3> </a>
+                        <a href="/informes/informe1" class="collapse_menu-item"> <h3>Informe_de_ingresos</h3> </a>
+                        <a href="/informes/informe2" class="collapse_menu-item"> <h3>Informe_de_ganancias</h3> </a>
+                        <a href="/informes/informe3" class="collapse_menu-item"> <h3>Informe_de_vendedores</h3> </a>
+                        <a href="/informes/informe4" class="collapse_menu-item"> <h3>Informe_de_productos</h3> </a>
+                        <a href="/informes/informe5" class="collapse_menu-item"> <h3>Informe_de_tipos_de_pago</h3> </a>
+                        <a href="/informes/informe6" class="collapse_menu-item"> <h3>Informe_de_ventas</h3> </a>
+                    </ul>
+                </div>
+
+                <a href="/configuracion" class="menu_item" id="menu_item_usuarios"  style="margin-top: 5rem;">
+                    <span class="material-icons-sharp">settings</span>
+                    <h3>Configuración</h3>
+                </a>
+
+                <a href="/logout" class="menu_item" id="cerrar_sesion">
+                    <span class="material-icons-sharp">logout</span>
+                    <h3>Salir</h3>
+                </a>
+            </div>
+        </aside>
+
+        <!-- ASIDE DERECHO -->
+
+        <div class="aside__derecho">
+            <div class="top">
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">menu</span>
+                </button>
+                <div class="cambio_tema" id="theme-toggler">
+                    <span class="material-icons-sharp active">light_mode</span>
+                    <span class="material-icons-sharp">dark_mode</span>
+                </div>
+                <div class="perfil">
+                    <div class="info">
+                        <p>¡Hola <b id="nombre_perfil">Jean!</b></p>
+                        <small class="text-muted" id="tipo_perfil">Admin</small>
+                    </div>
+                    <div class="profile-icon">
+                        <span class="material-icons-sharp">account_circle</span>
+                    </div>
+                </div>
+            </div>
+            <!-- FIN DEL ASIDE TOP DERECHO-->
+
+            
+            <div class="ventas__recientes" >
+                <div style="display:flex;align-content:center; margin-bottom: 1rem;" >
+                    <div class="filtro_dia">
+                        <h2>Informe de Ventas</h2>
+                        <div class="date">
+                            <input class="date__input" type="date" id="datePicker">
+                        </div>
+                        <button type="button" id="btn_filter" class="button_fechas"> <b>Aplicar</b> </button>
+                    </div>
+                    <button type="button" class="button_fechas" onclick="printReporte()"> <b>Imprimir</b></button>
+                    <button type="button" id="open-button" class="button_fechas"> <b>Filtrar por rango</b> </button>
+                </div>
+                
+                <div id="div_ventas">
+                    <h1 id="total_vendido" style="margin-left: 1rem;">Total Vendido:$0</h1>
+                    <table id="tabla_ventas_recientes">
+                        <thead>
+                            <tr>
+                                <th>Número de Venta</th>
+                                <th>Monto</th>
+                                <th>Tipo de Pago</th>
+                                <th>Estado</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="body_ventas_recientes">
+                            <!--<tr>
+                                <td>1</td>
+                                <td>1000</td>
+                                <td>Efectivo</td>
+                                <td class="success">Realizado</td>
+                                <td class="primary">Detalles</td>
+                            </tr>-->
+    
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+
+
+
+        </div>
+    </div>
+
+
+     <!-- MODAL INFORME DE VENTAS -->
+
+    <!-- MODAL rango de fechas-->
+    <div class="modal-overlay" id="modal-overlay"></div>
+
+    <div class="modal" id="modal">
+        <div class="modal-contenido">
+            <div class="modal_header">
+                <div>
+                    <h1>Rango de fechas</h1>
+                </div>
+                <button type="button" class="close-button" id="close-button">X</button>
+            </div>
+            <form class="modal_medium">
+                <div class="modal-contenido__item">
+                    <h2>Fecha 1</h2>
+                    <input class="date__input" type="date" id="fecha1">
+                </div>
+
+                <div class="modal-contenido__item" id="primaryKey">
+                    <h2>Fecha 2</h2>    
+                    <input class="date__input" type="date" id="fecha2">
+                </div>
+
+                <div class="modal_footer" style="flex-basis: 100%;display:flex;justify-content:end;">
+                    <button type="button" id="btn_range">Aplicar</button>
+                    <button type="button" id="cancel-button">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+    <div class="modal-overlay_detalle_venta" id="modal-overlay_detalle_venta"></div>
+
+    <div class="modal_detalle_venta" id="modal_detalle_venta" style="width: 28rem;">
+        <div class="modal-contenido" id="modal_contenido_venta">
+
+            <div id="DivIdToPrint">
+                <div class="modal_header">
+                    <div>
+                        <h1>Detalle de Venta</h1>
+                    </div>
+                </div>
+                <div class="modal-contenido__item" style="margin-top: 1.3rem;">
+                    <h2 style="text-align: center;" id="id_de_venta">N° de Venta: </h2>
+                </div>
+                <div class="modal_medium_detalle_venta" id="modal_medium_detalle_venta">
+                    <div class="modal_detalle_contenido__item" id="primaryKey">
+                        <h3 id="nombre_negocio">Negocio: </h3>
+                        <h3 id="rut_negocio">Rut Negocio: </h3>
+                        <h3 id="direccion_negocio">Dirección: </h3>
+                        <h3 id="telefono_negocio">Telefono: </h3>
+                        <h3 id="nombre_vendedor">Vendedor: </h3>
+                        <h3 id="fecha_venta">Fecha: </h3>
+                        <h3 id="forma_de_pago">Forma de pago: </h3>
+                    </div>
+                    <div style="margin-top: 1.3rem;">
+                        <table style="width: 100%; border-top: 1px solid black; border-bottom: 1px solid black;" id="tabla_detalle_venta">
+                            <thead>
+                                <tr>
+                                    <th>Cantidad</th>
+                                    <th>Item</th>
+                                    <th>Valor Unitario</th>
+                                    <th>SubTotal</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody_detalle_venta">
+                                <tr>
+                                    <td>
+    
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="display:flex; flex-direction:column;align-items:center; margin-top: 1.3rem;">
+                        <h2 id="pago_venta">Pago: $200</h2>
+                        <h2 id="vuelto_venta">Vuelto: $0</h2>
+                        <h2 id="total_venta">Total: $200</h2>
+                    </div>
+                    <div style="margin-top:1.3rem">
+                        <span>Boleta Electronica<br>
+                            No valida para el SII
+                        </span>
+                    </div>
+    
+                    
+                </div>
+
+            </div>
+
+            <div class="modal_footer" style="flex-basis: 100%;display:flex;justify-content:end;">
+                <button type="button" id="" onclick="printDiv()">IMPRIMIR</button>
+                <button type="button" id="ok-button-detalle-venta">Ok</button>
+            </div>
+        </div>
+    </div>
+    <button type="button" class="close-button" id="close-button-detalle-venta">X</button>
+
+
+
+
+    <script src="../../js/informes/informeVentas.js"></script>
+
+
+    
+
+<!-- LIBRERIA TO PDF-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.1/html2pdf.bundle.min.js" integrity="sha512-vDKWohFHe2vkVWXHp3tKvIxxXg0pJxeid5eo+UjdjME3DBFBn2F8yWOE0XmiFcFbXxrEOR1JriWEno5Ckpn15A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+
+</body>
+</html>

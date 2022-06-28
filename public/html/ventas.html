@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TDS2</title>
+
+    <!-- STYLE SHEET-->
+    <link rel="stylesheet" type="text/css" href="css/ventas.css">
+
+    <!-- MATERIAL ICON-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+
+    <!-- SCRIPT -->
+    <script src="https://kit.fontawesome.com/6086bb23a9.js" crossorigin="anonymous"></script>
+
+    <!-- CDN AUTOCOMPLETE CSS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tarekraafat-autocomplete.js/10.2.6/css/autoComplete.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    
+    
+</head>
+<body>
+    <div class="container">
+
+        
+        <!-- ASIDE IZQUIERDO -->
+        <aside>
+            <div class="aside__top" style="display: flex; justify-content:center;">
+                <div class="logo">
+                    <img id="logo" src="images/LOGO.png"> <!-- FALTA PONER LOGO -->
+                     <!-- <h2 style="color: bisque;">WSELL</h2> -->  <!-- NOMBRE DE PROYECTO -->
+                </div>
+                <div class="aside__close" id="close-btn">
+                    <span class="material-icons-sharp">close</span>
+                </div>
+            </div>
+            
+            <!-- ITEMS DEL MENU -->
+            <div class="aside__main  my-custom-scrollbar-menu">
+                <a href="/" class="menu_item" id="menu_item_index">
+                    <span class="material-icons-sharp">space_dashboard</span>
+                    <h3>Dashboard</h3>
+                </a>
+
+                <a href="/ventas" class="menu_item" id="menu_item_ventas">
+                    <span class="material-icons-sharp">storefront</span>
+                    <h3>Ventas</h3>
+                </a>
+
+                <div style="display:flex;flex-wrap: wrap;" id="menu_item_producto">
+                    <a href="/producto" class="menu_item">
+                        <span class="material-icons-sharp">inventory_2</span>
+                        <h3>Productos</h3>
+                    </a>
+                    <span id ="producto_icon" class="material-icons-sharp collapse_link" style="margin-top: 1.8rem;">expand_more</span>
+                    <ul class="collapse_menu" style="flex-basis: 100%; margin-top: -4rem;" id="menu_producto">
+                        <a href="/producto/categoria" class="collapse_menu-item"> <h3 class="sub_menu_titulo">Categoria</h3> </a>
+                        <a href="/producto/unidad" class="collapse_menu-item"> <h3>Unidad</h3> </a>
+                    </ul>
+                </div>
+
+
+                <a href="/negocio" class="menu_item" id="menu_item_negocio">
+                    <span class="material-icons-sharp">business</span>
+                    <h3>Negocio</h3>
+                </a>
+
+                <a href="/usuarios" class="menu_item" id="menu_item_usuarios">
+                    <span class="material-icons-sharp">people_alt</span>
+                    <h3>Usuarios</h3>
+                </a>
+
+                <div href="#" class="collapse" style="margin-left: 2rem;" id="menu_item_informes">
+                    <span class="material-icons-sharp">inventory</span>
+                    <h3 style="margin-left: 1.3rem;">Informes</h3>
+                    <span class="material-icons-sharp collapse_link">expand_more</span>
+                    <ul class="collapse_menu menu_informes" id="menu_informes">
+                        <a href="/informes/graficos" class="collapse_menu-item"> <h3>Graficos</h3> </a>
+                        <a href="/informes/tablas" class="collapse_menu-item"> <h3>Tablas</h3> </a>
+                        <a href="/informes/informeVentas" class="collapse_menu-item"> <h3>Reportes</h3> </a>
+                        <a href="/informes/informe1" class="collapse_menu-item"> <h3>Informe_de_ingresos</h3> </a>
+                        <a href="/informes/informe2" class="collapse_menu-item"> <h3>Informe_de_ganancias</h3> </a>
+                        <a href="/informes/informe3" class="collapse_menu-item"> <h3>Informe_de_vendedores</h3> </a>
+                        <a href="/informes/informe4" class="collapse_menu-item"> <h3>Informe_de_productos</h3> </a>
+                        <a href="/informes/informe5" class="collapse_menu-item"> <h3>Informe_de_tipos_de_pago</h3> </a>
+                        <a href="/informes/informe6" class="collapse_menu-item"> <h3>Informe_de_ventas</h3> </a>
+                    </ul>
+                </div>
+
+                <a href="/configuracion" class="menu_item" id="menu_item_usuarios"  style="margin-top: 5rem;">
+                    <span class="material-icons-sharp">settings</span>
+                    <h3>Configuración</h3>
+                </a>
+
+                <a href="/logout" class="menu_item" id="cerrar_sesion">
+                    <span class="material-icons-sharp">logout</span>
+                    <h3>Salir</h3>
+                </a>
+            </div>
+        </aside>
+
+        <!-- MAIN SCREEN -->
+
+        <main>
+            <h1>Ventas</h1>
+            <div class="date" id="current_date" style="white-space:pre">
+            </div>
+
+
+            <!-- Agregar Producto-->            
+            <div class="agregar__producto">
+                <div class="buscador_producto">
+                    <input id="autoComplete" class="header_search header_search-item" type="search" dir="ltr" spellcheck=false autocorrect="off" autocomplete="off" autocapitalize="off" maxlength="2048" tabindex="1"> 
+                </div>
+                <div onclick="cargarSKU()" class="agregar__producto-item">
+                    <span class="material-icons-sharp">add</span>
+                    <b>Agregar</b>
+                </div>
+                <div onclick="cancelar_venta()" class="agregar__producto-item">
+                    <span class="material-icons-sharp">close</span>
+                    <b>Cancelar Venta</b>
+                </div>
+                <h1 id="num_venta">N° de venta: num</h1>
+                
+            </div>
+            
+
+            <!-- lista venta -->
+
+            <div class="lista_venta table-wrapper-scroll-y my-custom-scrollbar">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>SKU</th>
+                            <th>Producto</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
+                            <th>SubTotal</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="producto_lista">
+                        <!--<tr>
+                            <td>Arroz 1KG</td>
+                            <td>1000</td>
+                            <td>1</td>
+                            <td>$200</td>
+                            <td><span class="material-icons-sharp" style="color: var(--color-danger);">delete</span></td>
+                        </tr>--> 
+
+                        
+                    
+
+                        
+                    </tbody>
+                </table>
+            </div>
+        </main>
+
+        <!-- FIN MAIN -->
+
+        <!-- ASIDE DERECHO -->
+
+        <div class="aside__derecho">
+            <div class="top">
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">menu</span>
+                </button>
+                <div class="cambio_tema" id="theme-toggler">
+                    <span class="material-icons-sharp active">light_mode</span>
+                    <span class="material-icons-sharp">dark_mode</span>
+                </div>
+                <div class="perfil">
+                    <div class="info">
+                        <p>¡Hola <b id="nombre_perfil">Jean!</b></p>
+                        <small class="text-muted" id="tipo_perfil">Admin</small>
+                    </div>
+                    <div class="profile-icon">
+                        <span class="material-icons-sharp">account_circle</span>
+                    </div>
+                </div>
+            </div>
+            <!-- FIN DEL ASIDE TOP DERECHO-->
+
+            <h2 style="text-align: center;">Información de venta</h2>
+            
+            <form id="informacion_venta" class="informacion_venta" action="/save_venta" method="POST">
+                <div class="informacion_venta-general">
+                    <div class="informacion_venta-item">
+                        <b style="color: var(--color-danger);">Total </b>
+                        <input name="total_venta" id="total_venta" type="text" value="0"></input>
+                    </div>
+
+                    <div class="informacion_venta-item" id="div_venta">
+                        <b >Paga</b>
+                        <!--<b id="paga_venta"style="color: var(--color-success);">$0</b>-->
+                        <input name="paga_venta" id="paga_venta"style="color: var(--color-success);" type="text" value="0"></input>
+                    </div>
+
+                    <div class="informacion_venta-item" id="div_vuelto">
+                        <b>Vuelto</b>
+                        <input name="vuelto_venta" id="vuelto_venta"style="color: var(--color-danger);" type="text" value="0"></input>
+                        <!--<b id="vuelto_venta" style="color: var(--color-danger);">$0</b>-->
+                    </div>
+                </div>
+                <!-- RUT DEL VENDEDOR -->
+                <input name="rut_vendedor" id="rut_vendedor" type="hidden" value="0"></input>
+
+                <h2 style="margin-top: 1rem;text-align: left;">Metodo de pago</h2>
+ 
+                <div class="metodo__pago">
+                    <div>
+                        <input type="radio" id="efectivo" name="metodo_pago" value="1" checked>
+                        <label for="efectivo" class ="label_metodo_pago"> <b>Efectivo</b> </label>
+                    </div>
+                    <div>
+                        <input type="radio" id="tarjeta" name="metodo_pago" value="2">
+                        <label for="tarjeta" class ="label_metodo_pago"> <b>Tarjeta</b> </label>
+                    </div>
+                </div>
+
+                
+
+                <div id="btn-pagar">
+                    <i class="fa-solid fa-cash-register"></i>
+                    <button type="button" id="btn_submit"><b>PAGAR</b></button>
+                </div>
+            </form>
+
+            <!--FIN DE ACTIVIDADES RECIENTES -->
+
+
+        </div>
+    </div>
+
+    <!-- CDN AUTOCOMPLETE SCRIPT-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tarekraafat-autocomplete.js/10.2.6/autoComplete.min.js"></script>
+
+    <!--<script src="js/index.js"></script>-->
+    <script src="js/ventas.js"></script>
+
+     <!-- SCRIPTS BOOSTRAP-->
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+    <!-- SWEET ALERT -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.8/dist/sweetalert2.all.min.js"></script>
+    
+
+</body>
+</html>

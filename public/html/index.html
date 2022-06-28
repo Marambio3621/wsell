@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TDS2</title>
+
+    <!-- STYLE SHEET-->
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+
+    <!-- MATERIAL ICON-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+
+    <!-- SCRIPT -->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+
+    <!-- DATABLE JQUERY SCRIPTS-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-colvis-2.2.2/b-html5-2.2.2/b-print-2.2.2/datatables.min.css"/>
+ 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-colvis-2.2.2/b-html5-2.2.2/b-print-2.2.2/datatables.min.js"></script>
+
+     <!-- CHART.JS -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js" integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+</head>
+<body>
+    <div class="container">
+
+        <!-- ASIDE IZQUIERDO -->
+        <aside>
+            <div class="aside__top" style="display: flex; justify-content:center;">
+                <div class="logo">
+                    <img id="logo" src="images/LOGO.png"> <!-- FALTA PONER LOGO -->
+                     <!-- <h2 style="color: bisque;">WSELL</h2> -->  <!-- NOMBRE DE PROYECTO -->
+                </div>
+                <div class="aside__close" id="close-btn">
+                    <span class="material-icons-sharp">close</span>
+                </div>
+            </div>
+            
+            <!-- ITEMS DEL MENU -->
+            <div class="aside__main  my-custom-scrollbar">
+                <a href="/" class="menu_item" id="menu_item_index">
+                    <span class="material-icons-sharp">space_dashboard</span>
+                    <h3>Dashboard</h3>
+                </a>
+
+                <a href="/ventas" class="menu_item" id="menu_item_ventas">
+                    <span class="material-icons-sharp">storefront</span>
+                    <h3>Ventas</h3>
+                </a>
+
+                <div style="display:flex;flex-wrap: wrap;" id="menu_item_producto">
+                    <a href="/producto" class="menu_item">
+                        <span class="material-icons-sharp">inventory_2</span>
+                        <h3>Productos</h3>
+                    </a>
+                    <span id ="producto_icon" class="material-icons-sharp collapse_link" style="margin-top: 1.8rem;">expand_more</span>
+                    <ul class="collapse_menu" style="flex-basis: 100%; margin-top: -4rem;" id="menu_producto">
+                        <a href="/producto/categoria" class="collapse_menu-item"> <h3 class="sub_menu_titulo">Categoria</h3> </a>
+                        <a href="/producto/unidad" class="collapse_menu-item"> <h3>Unidad</h3> </a>
+                    </ul>
+                </div>
+
+
+                <a href="/negocio" class="menu_item" id="menu_item_negocio">
+                    <span class="material-icons-sharp">business</span>
+                    <h3>Negocio</h3>
+                </a>
+
+                <a href="/usuarios" class="menu_item" id="menu_item_usuarios">
+                    <span class="material-icons-sharp">people_alt</span>
+                    <h3>Usuarios</h3>
+                </a>
+
+                <div href="#" class="collapse" style="margin-left: 2rem;" id="menu_item_informes">
+                    <span class="material-icons-sharp">inventory</span>
+                    <h3 style="margin-left: 1.3rem;">Informes</h3>
+                    <span class="material-icons-sharp collapse_link">expand_more</span>
+                    <ul class="collapse_menu menu_informes" id="menu_informes">
+                        <a href="/informes/graficos" class="collapse_menu-item"> <h3>Graficos</h3> </a>
+                        <a href="/informes/tablas" class="collapse_menu-item"> <h3>Tablas</h3> </a>
+                        <a href="/informes/informeVentas" class="collapse_menu-item"> <h3>Reportes</h3> </a>
+                        <a href="/informes/informe1" class="collapse_menu-item"> <h3>Informe_de_ingresos</h3> </a>
+                        <a href="/informes/informe2" class="collapse_menu-item"> <h3>Informe_de_ganancias</h3> </a>
+                        <a href="/informes/informe3" class="collapse_menu-item"> <h3>Informe_de_vendedores</h3> </a>
+                        <a href="/informes/informe4" class="collapse_menu-item"> <h3>Informe_de_productos</h3> </a>
+                        <a href="/informes/informe5" class="collapse_menu-item"> <h3>Informe_de_tipos_de_pago</h3> </a>
+                        <a href="/informes/informe6" class="collapse_menu-item"> <h3>Informe_de_ventas</h3> </a>
+                    </ul>
+                </div>
+
+                <a href="/configuracion" class="menu_item" id="menu_item_usuarios"  style="margin-top: 5rem;">
+                    <span class="material-icons-sharp">settings</span>
+                    <h3>Configuración</h3>
+                </a>
+
+
+                <a href="/logout" class="menu_item" id="cerrar_sesion">
+                    <span class="material-icons-sharp">logout</span>
+                    <h3>Salir</h3>
+                </a>
+            </div>
+        </aside>
+
+        <!-- MAIN SCREEN -->
+
+        <main>
+            <h1>Dashboard</h1>
+
+            <!-- INFORMACIONES -->
+            <div class="informacion" style="margin-top: 3rem;">
+                <!-- PRIMERA INFORMACION -->
+                <div class="ventas informacion__item">
+                    <span class="material-icons-sharp">analytics</span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Total Vendido</h3>
+                            <h1 id="total_vendido">$0</h1>
+                        </div>
+                        <div class="progress">
+                            <div class="circle filled" id="circulo_ingresos" data-fill="64">
+                                <p id="porcentaje_ingresos" class="circle-text">0%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <small class="text-muted recordatorio">Ultimas 24 Horas</small>
+                </div>
+
+                <!--SEGUNDA INFORMACION -->
+                <div class="inversion informacion__item">
+                    <span class="material-icons-sharp">bar_chart</span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Total Invertido</h3>
+                            <h1 id="total_invertido">$0</h1>
+                        </div>
+                        <div class="progress">
+                            <!-- <svg>
+                                <circle cx='38' cy='38' r='36'></circle>
+                            </svg>-->
+                            <div class="circle filled" id="circulo_invertido" data-fill="64">
+                                <p id="porcentaje_invertido" class="circle-text">0%</p>
+                            </div>
+                            <!--<div class="porcentaje">
+                                <p id="porcentaje_invertido">100%</p>
+                            </div>-->
+                        </div>
+                    </div>
+                    <small class="text-muted recordatorio">Ultimas 24 Horas</small>
+                </div>
+                
+                <!-- TERCERA INFORMACION -->
+                <div class="ganancia informacion__item">
+                    <span class="material-icons-sharp">stacked_line_chart</span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Total Ganancias</h3>
+                            <h1 id="total_ganancia">$0</h1>
+                        </div>
+                        <div class="progress">
+                            <div class="circle filled" id="circulo_ganancia" data-fill="64">
+                                <p id="porcentaje_ganancia" class="circle-text">0%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <small class="text-muted recordatorio">Ultimas 24 Horas</small>
+                </div>
+            </div>
+            <!-- FINAL DE INFORMACIONES-->
+
+
+            <!-- VENTAS RECIENTES -->
+
+            <div class="ventas__recientes">
+                <h2>Ventas Recientes</h2>
+                <table id="tabla_ventas_recientes">
+                    <thead>
+                        <tr>
+                            <th>Número de Venta</th>
+                            <th>Monto</th>
+                            <th>Tipo de Pago</th>
+                            <th>Estado</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="body_ventas_recientes">
+                        <!--<tr>
+                            <td>1</td>
+                            <td>1000</td>
+                            <td>Efectivo</td>
+                            <td class="success">Realizado</td>
+                            <td class="primary">Detalles</td>
+                        </tr>-->
+
+                    </tbody>
+                </table>
+                <a href="informes/informeVentas">Mostrar Todo</a>
+            </div>
+        </main>
+
+        <!-- FIN MAIN -->
+
+        <!-- ASIDE DERECHO -->
+
+        <div class="aside__derecho">
+            <div class="top">
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">menu</span>
+                </button>
+                <div class="cambio_tema" id="theme-toggler">
+                    <span class="material-icons-sharp active">light_mode</span>
+                    <span class="material-icons-sharp">dark_mode</span>
+                </div>
+                <div class="perfil">
+                    <div id="info_perfil" class="info">
+                        <p>¡Hola <b id="nombre_perfil">Jean!</b></p>
+                        <small class="text-muted" id="tipo_perfil">Admin</small>
+                    </div>
+                    <div class="profile-icon">
+                        <span class="material-icons-sharp">account_circle</span>
+                    </div>
+                </div>
+            </div>
+            <!-- FIN DEL ASIDE TOP DERECHO-->
+
+
+            <div class="actividades_recientes">
+                <h2>Top 5 Productos Vendidos</h2>
+                <div class="updates">
+                    <div class="graficos_item"><h2 style="text-align: center;">
+                        <canvas id="grafico_cantidad_productos" width="200" height="130"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!--FIN DE ACTIVIDADES RECIENTES -->
+
+            <div class="resumen_analisis">
+                <h2>Resumen de Análisis</h2>
+
+                <div class="resumen__items">
+                    <div class="icon">
+                        <span class="material-icons-sharp">shopping_cart</span>
+                    </div>
+                    <div class="seccion_derecha">
+                        <div class="info">
+                            <h3>Ventas Realizadas</h3>
+                            <small class="text-muted"> Ultimas 24 Horas</small>
+                        </div>
+                        <h5 id ="ventas_realizadas" class="success">+0%</h5>
+                        <h3 id ="cantidad_ventas_realizadas">0</h3>
+                    </div>
+                </div>
+
+                <div class="resumen__items productos_vendidos">
+                    <div class="icon">
+                        <span class="material-icons-sharp">local_mall</span>
+                    </div>
+                    <div class="seccion_derecha">
+                        <div class="info">
+                            <h3>Productos Vendidos</h3>
+                            <small class="text-muted"> Ultimas 24 Horas</small>
+                        </div>
+                        <h5 id="productos_vendidos" class="success">+0%</h5>
+                        <h3 id="cantidad_productos_vendidos">0</h3>
+                    </div>
+                </div>
+
+                <a href="/producto">
+                <div class="resumen__items agregar_producto">
+                    <div>
+                        <span class="material-icons-sharp">add</span>
+                        <h3>Agregar Producto</h3>
+                    </div>
+                </div>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="modal-overlay_detalle_venta" id="modal-overlay_detalle_venta"></div>
+
+    <div class="modal_detalle_venta" id="modal_detalle_venta" style="width: 28rem;">
+        <div class="modal-contenido" id="modal_contenido_venta">
+
+            <div id="DivIdToPrint">
+                <div class="modal_header">
+                    <div>
+                        <h1>Detalle de Venta</h1>
+                    </div>
+                </div>
+                <div class="modal-contenido__item" style="margin-top: 1.3rem;">
+                    <h2 style="text-align: center;" id="id_de_venta">N° de Venta: </h2>
+                </div>
+                <div class="modal_medium_detalle_venta" id="modal_medium_detalle_venta">
+                    <div class="modal_detalle_contenido__item" id="primaryKey">
+                        <h3 id="nombre_negocio">Negocio: </h3>
+                        <h3 id="rut_negocio">Rut Negocio: </h3>
+                        <h3 id="direccion_negocio">Dirección: </h3>
+                        <h3 id="telefono_negocio">Telefono: </h3>
+                        <h3 id="nombre_vendedor">Vendedor: </h3>
+                        <h3 id="fecha_venta">Fecha: </h3>
+                        <h3 id="forma_de_pago">Forma de pago: </h3>
+                    </div>
+                    <div style="margin-top: 1.3rem;">
+                        <table style="width: 100%; border-top: 1px solid black; border-bottom: 1px solid black;" id="tabla_detalle_venta">
+                            <thead>
+                                <tr>
+                                    <th>Cantidad</th>
+                                    <th>Item</th>
+                                    <th>Valor Unitario</th>
+                                    <th>SubTotal</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody_detalle_venta">
+                                <tr>
+                                    <td>
+    
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="display:flex; flex-direction:column;align-items:center; margin-top: 1.3rem;">
+                        <h2 id="pago_venta">Pago: $200</h2>
+                        <h2 id="vuelto_venta">Vuelto: $0</h2>
+                        <h2 id="total_venta">Total: $200</h2>
+                    </div>
+                    <div style="margin-top:1.3rem">
+                        <span>Boleta Electronica<br>
+                            No valida para el SII
+                        </span>
+                    </div>
+    
+                    
+                </div>
+
+            </div>
+
+            <div class="modal_footer" style="flex-basis: 100%;display:flex;justify-content:end;">
+                <button type="button" id="" onclick="printDiv()">IMPRIMIR</button>
+                <button type="button" id="ok-button-detalle-venta">Ok</button>
+            </div>
+        </div>
+    </div>
+    <button type="button" class="close-button" id="close-button-detalle-venta">X</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="js/index.js"></script>
+</body>
+</html>

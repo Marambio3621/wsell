@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>TDS2</title>
+
+    <!-- STYLE SHEET-->
+    <link rel="stylesheet" type="text/css" href="../../css/informes/graficos.css">
+
+    <!-- MATERIAL ICON-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <!-- CSS DATATABLE PLUGIN JQUERY-->
+
+
+    <!-- SCRIPT -->
+    <script src="https://kit.fontawesome.com/6086bb23a9.js" crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+    <!-- DATABLE JQUERY SCRIPTS-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-colvis-2.2.2/b-html5-2.2.2/b-print-2.2.2/datatables.min.css"/>
+ 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-colvis-2.2.2/b-html5-2.2.2/b-print-2.2.2/datatables.min.js"></script>
+
+
+    <!-- CDN BOOSTRAP-->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"> -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    -->
+
+    <!-- CHART.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js" integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    
+</head>
+<body>
+    <div class="container">
+
+        <!-- ASIDE IZQUIERDO -->
+        <aside>
+            <div class="aside__top" style="display: flex; justify-content:center;">
+                <div class="logo">
+                    <img id="logo" src="../images/LOGO.png"> <!-- FALTA PONER LOGO -->
+                     <!-- <h2 style="color: bisque;">WSELL</h2> -->  <!-- NOMBRE DE PROYECTO -->
+                </div>
+                <div class="aside__close" id="close-btn">
+                    <span class="material-icons-sharp">close</span>
+                </div>
+            </div>
+            
+            <!-- ITEMS DEL MENU -->
+            <div class="aside__main  my-custom-scrollbar">
+                <a href="/" class="menu_item">
+                    <span class="material-icons-sharp">space_dashboard</span>
+                    <h3>Dashboard</h3>
+                </a>
+
+                <a href="/ventas" class="menu_item">
+                    <span class="material-icons-sharp">storefront</span>
+                    <h3>Ventas</h3>
+                </a>
+
+                <div style="display:flex;flex-wrap: wrap;" id="menu_item_producto">
+                    <a href="/producto" class="menu_item">
+                        <span class="material-icons-sharp">inventory_2</span>
+                        <h3>Productos</h3>
+                    </a>
+                    <span id ="producto_icon" class="material-icons-sharp collapse_link" style="margin-top: 1.8rem;">expand_more</span>
+                    <ul class="collapse_menu" style="flex-basis: 100%; margin-top: -4rem;" id="menu_producto">
+                        <a href="/producto/categoria" class="collapse_menu-item"> <h3 class="sub_menu_titulo">Categoria</h3> </a>
+                        <a href="/producto/unidad" class="collapse_menu-item"> <h3>Unidad</h3> </a>
+                    </ul>
+                </div>
+
+
+                <a href="/negocio" class="menu_item" id="menu_item_negocio">
+                    <span class="material-icons-sharp">business</span>
+                    <h3>Negocio</h3>
+                </a>
+
+                <a href="/usuarios" class="menu_item">
+                    <span class="material-icons-sharp">people_alt</span>
+                    <h3>Usuarios</h3>
+                </a>
+
+                <div href="#" class="collapse" style="margin-left: 2rem;">
+                    <span class="material-icons-sharp">inventory</span>
+                    <h3 style="margin-left: 1.3rem;">Informes</h3>
+                    <span class="material-icons-sharp collapse_link">expand_more</span>
+                    <ul class="collapse_menu menu_informes" id="menu_informes">
+                        <a href="/informes/graficos" class="collapse_menu-item"> <h3>Graficos</h3> </a>
+                        <a href="/informes/tablas" class="collapse_menu-item"> <h3>Tablas</h3> </a>
+                        <a href="/informes/informeVentas" class="collapse_menu-item"> <h3>Reportes</h3> </a>
+                        <a href="/informes/informe1" class="collapse_menu-item"> <h3>Informe_de_ingresos</h3> </a>
+                        <a href="/informes/informe2" class="collapse_menu-item"> <h3>Informe_de_ganancias</h3> </a>
+                        <a href="/informes/informe3" class="collapse_menu-item"> <h3>Informe_de_vendedores</h3> </a>
+                        <a href="/informes/informe4" class="collapse_menu-item"> <h3>Informe_de_productos</h3> </a>
+                        <a href="/informes/informe5" class="collapse_menu-item"> <h3>Informe_de_tipos_de_pago</h3> </a>
+                        <a href="/informes/informe6" class="collapse_menu-item"> <h3>Informe_de_ventas</h3> </a>
+                    </ul>
+                </div>
+
+                <a href="/configuracion" class="menu_item" id="menu_item_usuarios"  style="margin-top: 5rem;">
+                    <span class="material-icons-sharp">settings</span>
+                    <h3>Configuración</h3>
+                </a>
+
+                <a href="/logout" class="menu_item" id="cerrar_sesion">
+                    <span class="material-icons-sharp">logout</span>
+                    <h3>Salir</h3>
+                </a>
+            </div>
+        </aside>
+
+        <!-- MAIN SCREEN -->
+
+        <!-- ASIDE DERECHO -->
+
+        <div class="aside__derecho">
+            <div class="top">
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">menu</span>
+                </button>
+                <div class="cambio_tema" id="theme-toggler">
+                    <span class="material-icons-sharp active">light_mode</span>
+                    <span class="material-icons-sharp">dark_mode</span>
+                </div>
+                <div class="perfil">
+                    <div class="info">
+                        <p>¡Hola <b id="nombre_perfil">Jean!</b></p>
+                        <small class="text-muted" id="tipo_perfil">Admin</small>
+                    </div>
+                    <div class="profile-icon">
+                        <span class="material-icons-sharp">account_circle</span>
+                    </div>
+                </div>
+            </div>
+            <!-- FIN DEL ASIDE TOP DERECHO-->
+
+
+            <div class="medium">
+                <div class="titulo_container">
+                    <h2 class="titulo_container_item" id="grafico_titulo">Graficos</h2>
+
+                    <div id="div_button_filter">
+                        <b>Año:</b>
+                        <select style="margin-left: 1rem; width: 3rem;" name="yearpicker" id="yearpicker" lass="titulo_container_item"></select>
+                        <button type="button" id="btn_filter"> <b>Activar Filtro</b> </button>
+                    </div>
+                </div>
+                
+                <div class="graficos_container">
+                    <div class="graficos_item"><h2 style="text-align: center;">INGRESOS OBTENIDOS DEL AÑO</h2>
+                        <canvas id="grafico_ingresos_mensuales" width="200" height="130"></canvas>
+                    </div>
+                    <div class="graficos_item">GANANCIAS/MENSUAL
+                        <canvas id="grafico_ganancias_mensuales" width="200" height="130"></canvas>
+                    </div>
+                    <div class="graficos_item"><h2 style="text-align: center;">INGRESOS POR VENDEDOR EN EL AÑO</h2>
+                        <canvas id="grafico_ingresos_vendedor" width="200" height="130"></canvas>
+                    </div>
+                    <div class="graficos_item"><h2 style="text-align: center;">TOP 10 CANTIDAD DE PRODUCTOS VENDIDOS</h2>
+                        <canvas id="grafico_cantidad_productos" width="200" height="130"></canvas>
+                    </div>
+                    <div class="graficos_item"><h2 style="text-align: center;">Porcentaje Efectivo vs Tarjeta</h2>
+                        <canvas id="grafico_efectivo_tarjeta" style="max-height:20rem"></canvas>
+                    </div>
+                    <div class="graficos_item"><h2 style="text-align: center;">CANTIDAD VENTAS REALIZADAS DEL AÑO
+                        <canvas id="grafico_cantidad_ventas" width="200" height="130"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+
+   
+    <script src="../../js/informes/graficos.js"></script>
+
+    <!-- SCRIPTS BOOSTRAP-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+    <!-- SWEET ALERT -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.8/dist/sweetalert2.all.min.js"></script>
+
+    
+
+
+</body>
+
+    
+</html>
